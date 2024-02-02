@@ -2,8 +2,17 @@ name: Check and build app
 
 on:
   pull_request:
+    types: [opened, reopened]
+    paths:
+      - Cargo.toml
+      - Cargo.lock
+      - src/**
   push:
     branches: dev
+    paths:
+      - Cargo.toml
+      - Cargo.lock
+      - src/**
   workflow_call:
 
 env:
