@@ -1,0 +1,15 @@
+[[users]]
+username = "user"
+honkai = true
+genshin = true
+star-rail = true
+ltuid = "1111111"
+ltoken = "v2_XXXXXXXXXXXX"
+
+[[users]]
+username = "user278"
+honkai = false
+genshin = true
+star-rail = true
+ltuid = "2222222"
+ltoken = "v2_XXXXXXXXXXXX"
