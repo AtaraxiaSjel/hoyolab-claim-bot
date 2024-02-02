@@ -1,0 +1,3 @@
+# hoyolab-claim-bot
+
+WIP

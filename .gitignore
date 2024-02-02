@@ -1,0 +1,6 @@
+.envrc
+/target
+/result*
+/config.toml
+/.vscode
+/.devenv

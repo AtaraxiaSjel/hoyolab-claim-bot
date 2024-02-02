@@ -1,0 +1,48 @@
+name: Check and build app
+
+on:
+  pull_request:
+  push:
+    branches: dev
+  workflow_call:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: Check project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable --profile minimal --component clippy --component rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - name: Format
+        run: cargo fmt --check
+      - name: Clippy
+        run: cargo clippy -- -W clippy::pedantic
+
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    needs: check
+    name: Build debug on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable --profile minimal
+      - uses: Swatinem/rust-cache@v2
+      - name: Build debug binary
+        run: cargo build
+      - name: Upload ${{ matrix.os }} artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}
+          path: |
+            target/debug/hoyolab-claim-bot.exe
+            target/debug/hoyolab-claim-bot
