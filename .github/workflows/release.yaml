@@ -52,3 +52,15 @@ jobs:
         with:
           bin: hoyolab-claim-bot
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  nix-cachix:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nixbuild/nix-quick-install-action@v26
+      - uses: cachix/cachix-action@v14
+        with:
+          name: ataraxiadev-foss
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - run: nix run github:Mic92/nix-fast-build -- --no-nom --skip-cached -f .#packages.x86_64-linux.hoyolab-claim-bot
