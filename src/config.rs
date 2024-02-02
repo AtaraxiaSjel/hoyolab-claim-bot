@@ -33,7 +33,7 @@ pub struct Config {
 
 impl Config {
     pub fn build(args: &[String]) -> Result<Config> {
-        let filename = match args.get(2) {
+        let filename = match args.get(1) {
             Some(f) => f,
             None => "config.toml",
         };
