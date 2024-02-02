@@ -1,7 +1,7 @@
 { lib, rustPlatform, openssl, pkg-config }:
 rustPlatform.buildRustPackage {
   pname = "hoyolab-claim-bot";
-  version = "1.0.0";
+  version = "1.0.1";
   src = lib.cleanSource ./.;
   cargoLock.lockFile = ./Cargo.lock;
 
