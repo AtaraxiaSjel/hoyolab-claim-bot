@@ -3,6 +3,7 @@ username = "user"
 honkai = true
 genshin = true
 star-rail = true
+zzz = true
 ltuid = "1111111"
 ltoken = "v2_XXXXXXXXXXXX"
 
@@ -11,5 +12,6 @@ username = "user278"
 honkai = false
 genshin = true
 star-rail = true
+zzz = false
 ltuid = "2222222"
 ltoken = "v2_XXXXXXXXXXXX"

@@ -19,6 +19,7 @@ static CLAIM_URIS: phf::Map<&'static str, &'static str> = phf_map! {
     "genshin" => "https://sg-hk4e-api.hoyolab.com/event/sol/sign?lang=en-us&act_id=e202102251931481",
     "honkai" => "https://sg-public-api.hoyolab.com/event/mani/sign?lang=en-us&act_id=e202110291205111",
     "star_rail" => "https://sg-public-api.hoyolab.com/event/luna/os/sign?lang=en-us&act_id=e202303301540311",
+    "zzz" => "https://sg-act-nap-api.hoyolab.com/event/luna/zzz/os/sign?lang=en-us&act_id=e202406031448091",
 };
 
 #[allow(dead_code)]
@@ -56,6 +57,12 @@ pub fn claim(users: &[User]) -> anyhow::Result<()> {
             url_map.insert(
                 "star_rail".to_string(),
                 CLAIM_URIS.get("star_rail").unwrap().to_string(),
+            );
+        }
+        if user.zzz {
+            url_map.insert(
+                "zzz".to_string(),
+                CLAIM_URIS.get("zzz").unwrap().to_string(),
             );
         }
 

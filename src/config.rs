@@ -24,6 +24,8 @@ pub struct User {
     #[serde(rename(deserialize = "star-rail"))]
     #[serde(default)]
     pub star_rail: bool,
+    #[serde(default)]
+    pub zzz: bool,
 }
 
 #[derive(Deserialize, Debug)]

@@ -1,8 +1,18 @@
-{ lib, rustPlatform, openssl, pkg-config }:
+{
+  lib,
+  rustPlatform,
+  openssl,
+  pkg-config,
+}:
 rustPlatform.buildRustPackage {
   pname = "hoyolab-claim-bot";
-  version = "1.0.1";
-  src = lib.cleanSource ./.;
+  version = "1.1.0";
+  src = lib.cleanSource (
+    builtins.path {
+      path = ./.;
+      name = "hoyolab-claim-bot";
+    }
+  );
   cargoLock.lockFile = ./Cargo.lock;
 
   nativeBuildInputs = [ pkg-config ];
@@ -13,6 +23,6 @@ rustPlatform.buildRustPackage {
     homepage = "https://github.com/AtaraxiaSjel/hoyolab-claim-bot";
     license = licenses.mit;
     maintainers = with maintainers; [ ataraxiasjel ];
-    platforms = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+    platforms = platforms.linux;
   };
 }
