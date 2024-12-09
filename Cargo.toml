@@ -10,4 +10,4 @@ thiserror = "2.0"
 toml = "0.8"
 phf = { version = "0.11", features = ["macros"] }
 serde = { version = "1.0", features = ["derive"] }
-ureq = { version = "2.11", features = ["proxy-from-env", "native-tls", "json"] }
+ureq = { version = "2.12", features = ["proxy-from-env", "native-tls", "json"] }
